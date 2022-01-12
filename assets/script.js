@@ -19,42 +19,48 @@ var searchButton = document.querySelector('button')
 function handleSearchSubmit(event) {
     event.preventDefault();
     var query = searchBar.value
+    //queryString will not work until villagerId can be grabbed from API using input from user's search.
     var queryString = villagerApiUrl + villagerId
-
-    // var query = 'Dotty'
     console.log(query)
 
-fetch(queryString)
-.then(function (response) {
-    return response.json();
-})
-.then(function(data) {
-    //Editing Main Card header
-    // mainName.textContent = data.villagerId.name.________
-    console.log(data)
-    searchObj(data, query)
+    fetch(queryString)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function(data) {
+        //Editing Main Card header
+        // mainName.textContent = data.villagerId.name.________
+        console.log(data)
+        // searchObj(data, query)
+        var apiVillagerInfo = data.filter(villager => villager.name['name-USen'] === query)
+        console.log(apiVillagerInfo);
 
 })
-    //This function should search for a name in the API that matches the user's input and then append
-    //the matching villager's villagerId to the API url so that their information can be rendered.
-    function searchObj (obj, query) {
-        for (var key in obj) {
-            var value = obj[key];
-
-            if (typeof value === 'object') {
-                searchObj(value, query);
-            }
-
-            if (value === query) {
-                console.log('The property ' + key + ' matches your query of ' + value);
-                console.log(value);
-                console.log(typeof value);
-                //Insert API url manipulation here
-
-            }
-        }
-    }
 }
+
+//If matches, should kick out that villager's object and properties
+//This function should search for a name in the API that matches the user's input and then append
+    
+    //the matching villager's villagerId to the API url so that their information can be rendered.
+//     function searchObj (obj, query) {
+//         for (var key in obj) {
+//             var value = obj[key];
+
+//             if (typeof value === 'object') {
+//                 searchObj(value, query);
+//             }
+
+//             if (value === query) {
+//                 console.log('The property ' + key + ' matches your query of ' + value);
+//                 console.log(value);
+//                 console.log(typeof value);
+//                 //Insert API url manipulation here
+
+
+//             }
+//         }
+//     }
+// }
 
 searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
