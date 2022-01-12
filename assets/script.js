@@ -9,24 +9,55 @@
 //The villagerId of the match is assigned to variable 'villagerId'
 //That villagerId is inserted into var 'queryString' to complete URL for fetch function
 
-var villagerId = 'input from autofill'
-var villagerApiUrl = 'https://acnhapi.com/v1/villagers/'
-var queryString = villagerApiUrl + villagerId
+var villagerId = ''
+var villagerApiUrl = 'https://acnhapi.com/v1a/villagers/'
+var searchBar = document.querySelector('input')
+var searchButton = document.querySelector('button')
 
 // if (searchInput === data[i].)
 
+function handleSearchSubmit(event) {
+    event.preventDefault();
+    var query = searchBar.value
+    var queryString = villagerApiUrl + villagerId
+
+    // var query = 'Dotty'
+    console.log(query)
+
 fetch(queryString)
 .then(function (response) {
-    console.log(villagerApiUrl);
     return response.json();
 })
 .then(function(data) {
-    console.log(data);
-    mainName.textContent = data.villagerId.name.________
+    //Editing Main Card header
+    // mainName.textContent = data.villagerId.name.________
+    console.log(data)
+    searchObj(data, query)
+
 })
+    //This function should search for a name in the API that matches the user's input and then append
+    //the matching villager's villagerId to the API url so that their information can be rendered.
+    function searchObj (obj, query) {
+        for (var key in obj) {
+            var value = obj[key];
 
+            if (typeof value === 'object') {
+                searchObj(value, query);
+            }
 
+            if (value === query) {
+                console.log('The property ' + key + ' matches your query of ' + value);
+                console.log(value);
+                console.log(typeof value);
+                //Insert API url manipulation here
 
+            }
+        }
+    }
+}
+
+searchBar.addEventListener('submit', handleSearchSubmit)
+searchButton.addEventListener('click', handleSearchSubmit)
 
 //---Core function---:
 //WHEN I search for any desired villager using the search bar,
