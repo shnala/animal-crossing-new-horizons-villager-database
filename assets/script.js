@@ -11,14 +11,18 @@
 
 var villagerId = ''
 var villagerApiUrl = 'https://acnhapi.com/v1a/villagers/'
-var userInput = document.querySelector('.input-group-field')
-//Uncomment when search bar is properly implemented.
-// var query = userInput.val
-var query = 'Dotty'
-console.log(query)
-var queryString = villagerApiUrl + villagerId
+var searchBar = document.querySelector('input')
+var searchButton = document.querySelector('button')
 
 // if (searchInput === data[i].)
+
+function handleSearchSubmit(event) {
+    event.preventDefault();
+    var query = searchBar.value
+    var queryString = villagerApiUrl + villagerId
+
+    // var query = 'Dotty'
+    console.log(query)
 
 fetch(queryString)
 .then(function (response) {
@@ -50,7 +54,10 @@ fetch(queryString)
             }
         }
     }
+}
 
+searchBar.addEventListener('submit', handleSearchSubmit)
+searchButton.addEventListener('click', handleSearchSubmit)
 
 //---Core function---:
 //WHEN I search for any desired villager using the search bar,
