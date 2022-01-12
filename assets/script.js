@@ -1,4 +1,32 @@
 //PSEUDOCODE
+//TODO: Can only search for villagers using a number id. Cannot use villager name 
+//in search query. Need way around this.
+//Maybe autofill can solve? Have autofill array made, then clicking a villager from the
+//autofill dropdown will navigate to their respective id.
+
+//Logic order for search query:
+//User input parses thru all data[i].name.name-US-en values until there's a match
+//The villagerId of the match is assigned to variable 'villagerId'
+//That villagerId is inserted into var 'queryString' to complete URL for fetch function
+
+var villagerId = 'input from autofill'
+var villagerApiUrl = 'https://acnhapi.com/v1/villagers/'
+var queryString = villagerApiUrl + villagerId
+
+// if (searchInput === data[i].)
+
+fetch(queryString)
+.then(function (response) {
+    console.log(villagerApiUrl);
+    return response.json();
+})
+.then(function(data) {
+    console.log(data);
+    mainName.textContent = data.villagerId.name.________
+})
+
+
+
 
 //---Core function---:
 //WHEN I search for any desired villager using the search bar,
@@ -33,3 +61,4 @@
 //--Stalk market price planner; record prices from the main game and predict trends to
 //maximize profit! This would require implementation of a dynamic graph feature which we 
 //haven't touched on yet but, it might be easy with modern API's like Materialize.
+
