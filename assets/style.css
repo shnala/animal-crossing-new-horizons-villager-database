@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(#32cf81, rgb(7, 53, 46));
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Unkempt', cursive;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+header h3 {
+    font-family: 'Unkempt', cursive;
+}
+
+body {
+    background-color: #cbf1ca;
+}
+
