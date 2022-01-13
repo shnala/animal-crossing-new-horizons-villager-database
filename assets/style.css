@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Unkempt', cursive;
+}
+
+body {
+    background-color: #cbf1ca;
+}
+
+header {
+    background: linear-gradient(#32cf81, rgb(7, 53, 46));
+    color: white;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+header h3 {
+    font-family: 'Unkempt', cursive;
+}
+
+form {
+    background-color: white;
+    padding: 5px;
+    width: 80%;
+    display: inline-block;
+    justify-content: center;
+    border-radius: 15px;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+input {
+    width: 100%;
+}
+
+card welcome {
+
+}
+
+
+
+
