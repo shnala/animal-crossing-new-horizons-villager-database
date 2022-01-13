@@ -11,6 +11,7 @@
 
 var villagerId = ''
 var villagerApiUrl = 'https://acnhapi.com/v1a/villagers/'
+var faveVillagers = []
 //These querySelector's will need to be updated if more buttons/input fields are added
 //to the HTML page.
 var searchBar = document.querySelector('input')
@@ -21,7 +22,6 @@ var searchButton = document.querySelector('button')
 function handleSearchSubmit(event) {
     event.preventDefault();
     var query = searchBar.value
-    console.log(query)
     //queryString will not work until villagerId can be grabbed from API using input from user's search.
 
     fetch(villagerApiUrl)
@@ -40,9 +40,30 @@ function handleSearchSubmit(event) {
         console.log(villagerId);
         // console.log(apiVillagerInfo[0]);
         queryRender(queryString);
+        //TODO: remove this call from this function. Currently only putting it here for
+        //testing purposes.
+        saveToQuickList();
     })
    
 }
+
+//TODO: The quicklist functionality will go here. When the user clicks the save button in the 
+//main character card, that villager's name and icon should be rendered in a single
+//line on the quicklist. 
+//TODO: When a villager is saved to the quicklist, its unique id should be saved to localstorage
+//so that, if the page is refreshed, a init function will run and grab the id from localstorage,
+//make a fetch on the API based on that id, and instantly render that villager's name and icon
+//again on the quick list.
+//TODO: Entries on the quicklist should be clickable. When clicked, that villager's id is 
+//appended once again to the queryString variable, which gets fed back into the queryRender
+//function, which will then render that villager's bio on the main card.
+
+function saveToQuickList() {
+    var query = searchBar.value
+    console.log(query)
+    
+}
+
 
 function queryRender(queryString) {
     fetch(queryString)
@@ -53,9 +74,10 @@ function queryRender(queryString) {
         //Functioning. Render elements to main card here.
         console.log(data);
 
-        //This var is a placeholder until a proper container with an id is made on the html.
-        //Will need to nuke container with innerHtml once it is created so that new queries
-        //do not compound in mainCard.
+        //TODO: This body variable is a placeholder until a proper container with an id is made on the html.
+        //TODO: Will need to nuke container with innerHtml once it is created so that new queries
+        //do not compound in mainCard. The nuke should be run every time a new search is made. 
+        //Take care to not nuke any id's or buttons.
         var body = document.querySelector('body')
 
         var mainCard = document.createElement('div') 
@@ -85,9 +107,45 @@ function queryRender(queryString) {
         villagerImg.innerHTML = "<img src='" + data.image_uri + "' alt='Image of villager.'>";
         mainCard.appendChild(villagerImg)
 
+        var villagerMottoEl = document.createElement('div')
+        var villagerMotto = document.createElement('span')
+        var villagerMottoTag = document.createElement('h5')
+        villagerMotto.textContent = data.saying
+        villagerMottoTag.textContent = 'Motto: '
+        villagerMottoEl.appendChild(villagerMottoTag)
+        villagerMottoTag.appendChild(villagerMotto)
+        mainCard.appendChild(villagerMottoEl)
+        
+        var villagerPhraseEl = document.createElement('div')
+        var villagerPhrase = document.createElement('span')
+        var villagerPhraseTag = document.createElement('h5')
+        villagerPhrase.textContent = data['catch-phrase'];
+        villagerPhraseTag.textContent = 'Catch-Phrase: '
+        villagerPhraseTag.appendChild(villagerPhrase)
+        villagerPhraseEl.appendChild(villagerPhraseTag)
+        mainCard.appendChild(villagerPhraseEl)
+        
+        var villagerHobbyEl = document.createElement('div')
+        var villagerHobby = document.createElement('span')
+        var villagerHobbyTag = document.createElement('h5')
+        villagerHobby.textContent = data.hobby
+        villagerHobbyTag.textContent = 'Hobby: '
+        villagerHobbyTag.appendChild(villagerHobby)
+        villagerHobbyEl.appendChild(villagerHobbyTag)
+        mainCard.appendChild(villagerHobbyEl)
+
 
     })
 }
+
+
+//TODO: saveButton is not currently defined. Once mainCard is made in HTML and a button has been
+//inserted, grab it in JS and assign it the var saveButton.
+// saveButton.addEventListener('click', saveToQuickList)
+searchBar.addEventListener('submit', handleSearchSubmit)
+searchButton.addEventListener('click', handleSearchSubmit)
+
+//________________________Legacy Code/Notes________________________________
 
 //If matches, should kick out that villager's object and properties
 //This function should search for a name in the API that matches the user's input and then append
@@ -113,8 +171,6 @@ function queryRender(queryString) {
 //     }
 // }
 
-searchBar.addEventListener('submit', handleSearchSubmit)
-searchButton.addEventListener('click', handleSearchSubmit)
 
 //---Core function---:
 //WHEN I search for any desired villager using the search bar,
