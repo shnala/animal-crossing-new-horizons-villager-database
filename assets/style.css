@@ -23,12 +23,12 @@ h3 {
 }
 
 form {
-    border-radius: 15px;
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;
     padding: 10px;
+    width: 20%;
     text-align: center;
 }
 
@@ -38,43 +38,50 @@ input {
 
 .card-divider{
     background-color: rgb(67, 161, 146);
+    border-radius: 10px;
     justify-content: center;
     text-align: center;
 }
 
-.three-cards {
+.one-card {
     position: absolute;
     left: 20px;
 }
 
-.bd {
+.main {
+    position: absolute;
+    right: 29%;
+    bottom: 0;
+    margin: auto;
+}
+
+.three-cards {
     position: absolute;
     right: 20px;
 }
 
-#mascot{
-    position: absolute;
-    padding: 20px;
-    right:20px;
-    bottom: 20px;
-}
 #welcomecard{
     padding: 10px;
 }
-/* #search{
-    margin:auto;
-} */
-#qlcard{
-  left:5px;
-  padding: 10px;
+#maincard{
+    padding: 10px;
 }
+#qlcard{
+    padding: 10px;
+  }
 #bdaycard{
     padding:10px;
 }
 #vodcard{
   padding:10px;
 }
+#mascot{
+    position: absolute;
+    padding: 20px;
+    left: 20px;
+    bottom: 20px;
+}
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 50%) {
     
 }
