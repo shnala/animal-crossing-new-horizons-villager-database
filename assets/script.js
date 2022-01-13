@@ -11,13 +11,66 @@
 
 var villagerId = ''
 var villagerApiUrl = 'https://acnhapi.com/v1a/villagers/'
-var faveVillagers = []
+var villagerSaved = []
 //These querySelector's will need to be updated if more buttons/input fields are added
 //to the HTML page.
 var searchBar = document.querySelector('input')
-var searchButton = document.querySelector('button')
+var searchButton = document.querySelector('.success')
 
-// if (searchInput === data[i].)
+
+//Loads the five most recently saved villagers to quicklist.
+//TODO: In order for this to render saved villagers to quicklist on load, it needs access
+//to [data]. This will require a foreach loop
+function onLoad() {
+    var history = JSON.parse(localStorage.getItem("quicklist"))
+    console.log(history);
+
+    var recentHistory = history.reverse();
+    console.log(recentHistory);
+
+    recentHistory.length = 5;
+    console.log(recentHistory);
+
+            //____________paste divider______________
+            //TODO: Remove this block when static quicklist ID has been implemented on HTML.
+            var quickListContainer = document.querySelector('#qlcard')
+            var quicklistEl = document.createElement('ul')
+            quickListContainer.appendChild(quicklistEl)
+            //___________paste divider_______________
+
+    
+    for (let i = 0; i < recentHistory.length; i++) {
+        // const element = recentHistory[i];
+        //TODO: For each element in the array, we need to
+        //1. 
+
+            var loadId = recentHistory[i].id
+            var loadString = villagerApiUrl + loadId
+            console.log(loadString);
+
+            fetch(loadString)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log(data)
+            
+            //______________________paste divider_____________________
+
+            var qlItem = document.createElement('li')
+            qlItem.textContent = data.name['name-USen']
+            quicklistEl.appendChild(qlItem)
+
+            var qlItemIcon = document.createElement('span')
+            //TODO: Set dimensions of icon to not be oversized.
+            qlItemIcon.innerHTML = "<img src='" + data.icon_uri + "' alt='Icon of villager.'>";
+            qlItem.appendChild(qlItemIcon)
+            //_______________________paste divider____________________
+
+            })
+    }
+    
+}
 
 function handleSearchSubmit(event) {
     event.preventDefault();
@@ -30,40 +83,18 @@ function handleSearchSubmit(event) {
     })
     .then(function(data) {
         console.log(data)        
-        //Editing Main Card header
-        // mainName.textContent = data.villagerId.name.________
-
         var apiVillagerInfo = data.filter(villager => villager.name['name-USen'] === query)
         var villagerId = apiVillagerInfo[0].id;
         var queryString = villagerApiUrl + villagerId
+
         console.log(queryString);
         console.log(villagerId);
         // console.log(apiVillagerInfo[0]);
         queryRender(queryString);
-        //TODO: remove this call from this function. Currently only putting it here for
-        //testing purposes.
-        saveToQuickList();
+
     })
    
 }
-
-//TODO: The quicklist functionality will go here. When the user clicks the save button in the 
-//main character card, that villager's name and icon should be rendered in a single
-//line on the quicklist. 
-//TODO: When a villager is saved to the quicklist, its unique id should be saved to localstorage
-//so that, if the page is refreshed, a init function will run and grab the id from localstorage,
-//make a fetch on the API based on that id, and instantly render that villager's name and icon
-//again on the quick list.
-//TODO: Entries on the quicklist should be clickable. When clicked, that villager's id is 
-//appended once again to the queryString variable, which gets fed back into the queryRender
-//function, which will then render that villager's bio on the main card.
-
-function saveToQuickList() {
-    var query = searchBar.value
-    console.log(query)
-    
-}
-
 
 function queryRender(queryString) {
     fetch(queryString)
@@ -80,6 +111,8 @@ function queryRender(queryString) {
         //Take care to not nuke any id's or buttons.
         var body = document.querySelector('body')
 
+        //This commented-out variable will be the actual main-card once repo is updated.
+        // var mainCard = document.querySelector('#main-card')
         var mainCard = document.createElement('div') 
         body.appendChild(mainCard)
 
@@ -134,7 +167,53 @@ function queryRender(queryString) {
         villagerHobbyEl.appendChild(villagerHobbyTag)
         mainCard.appendChild(villagerHobbyEl)
 
+        var saveButton = document.createElement('button')
+        saveButton.textContent = 'Save'
+        mainCard.appendChild(saveButton)
+        saveButton.addEventListener('click', saveToQuickList)
 
+                //TODO: Temp nuke test for testing. Remove later...
+                // if (mainCard !== ''){
+                //     mainCard.innerHTML = ''
+                // }
+               
+//TODO: Entries on the quicklist should be clickable. When clicked, that villager's id is 
+//appended once again to the queryString variable, which gets fed back into the queryRender
+//function, which will then render that villager's bio on the main card.
+//TODO: Currently, saveToQuickList will overwrite items generated from local storage. This might be 
+//fixed by having the function call the onLoad function again after the array has been updated.
+
+        function saveToQuickList() {
+
+                //TODO: Dynamically rendering quicklist ul until a static ul is made in the HTML that I can
+                //append to.
+                var quickListContainer = document.querySelector('#qlcard')
+                //TODO: The nuke below will remove EVERYTHING inside the qlcard, even the card header. 
+                //Move id into the list div to prevent this from happening.
+                quickListContainer.innerHTML = ''
+                var quicklistEl = document.createElement('ul')
+                quickListContainer.appendChild(quicklistEl)
+
+                var qlOne = document.createElement('li')
+                qlOne.textContent = data.name['name-USen']
+                quicklistEl.appendChild(qlOne)
+
+                var qlOneIcon = document.createElement('span')
+                //TODO: Set dimensions of icon to not be oversized.
+                qlOneIcon.innerHTML = "<img src='" + data.icon_uri + "' alt='Icon of villager.'>";
+                qlOne.appendChild(qlOneIcon)
+        
+                var villagerKey = {
+                    name: data.name['name-USen'],
+                    id: data.id
+                }
+
+                villagerSaved = JSON.parse(localStorage.getItem("quicklist")) || []
+                villagerSaved.push(villagerKey);
+                localStorage.setItem("quicklist", JSON.stringify(villagerSaved));
+            
+        }
+        
     })
 }
 
@@ -144,6 +223,8 @@ function queryRender(queryString) {
 // saveButton.addEventListener('click', saveToQuickList)
 searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
+
+onLoad();
 
 //________________________Legacy Code/Notes________________________________
 
