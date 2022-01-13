@@ -44,7 +44,7 @@ input {
 #mascot{
     display: flex;
     padding: 20px;
-    right:20px;
+    /* right:20px; */
 }
 #welcomecard{
     padding: 10px;
