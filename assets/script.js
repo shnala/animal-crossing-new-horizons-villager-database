@@ -11,6 +11,8 @@
 
 var villagerId = ''
 var villagerApiUrl = 'https://acnhapi.com/v1a/villagers/'
+//These querySelector's will need to be updated if more buttons/input fields are added
+//to the HTML page.
 var searchBar = document.querySelector('input')
 var searchButton = document.querySelector('button')
 
@@ -19,23 +21,72 @@ var searchButton = document.querySelector('button')
 function handleSearchSubmit(event) {
     event.preventDefault();
     var query = searchBar.value
-    //queryString will not work until villagerId can be grabbed from API using input from user's search.
-    var queryString = villagerApiUrl + villagerId
     console.log(query)
+    //queryString will not work until villagerId can be grabbed from API using input from user's search.
 
+    fetch(villagerApiUrl)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data)        
+        //Editing Main Card header
+        // mainName.textContent = data.villagerId.name.________
+
+        var apiVillagerInfo = data.filter(villager => villager.name['name-USen'] === query)
+        var villagerId = apiVillagerInfo[0].id;
+        var queryString = villagerApiUrl + villagerId
+        console.log(queryString);
+        console.log(villagerId);
+        // console.log(apiVillagerInfo[0]);
+        queryRender(queryString);
+    })
+   
+}
+
+function queryRender(queryString) {
     fetch(queryString)
     .then(function (response) {
         return response.json();
     })
     .then(function(data) {
-        //Editing Main Card header
-        // mainName.textContent = data.villagerId.name.________
-        console.log(data)
-        // searchObj(data, query)
-        var apiVillagerInfo = data.filter(villager => villager.name['name-USen'] === query)
-        console.log(apiVillagerInfo);
+        //Functioning. Render elements to main card here.
+        console.log(data);
 
-})
+        //This var is a placeholder until a proper container with an id is made on the html.
+        //Will need to nuke container with innerHtml once it is created so that new queries
+        //do not compound in mainCard.
+        var body = document.querySelector('body')
+
+        var mainCard = document.createElement('div') 
+        body.appendChild(mainCard)
+
+        var villagerName = document.createElement('h3')
+        villagerName.textContent = data.name['name-USen']
+        mainCard.appendChild(villagerName)
+
+        var villagerSpecies = document.createElement('h5')
+        villagerSpecies.textContent = data.species
+        mainCard.appendChild(villagerSpecies)
+
+        var villagerGender = document.createElement('h5')
+        villagerGender.textContent = data.gender
+        mainCard.appendChild(villagerGender)
+
+        var villagerBday = document.createElement('h5')
+        villagerBday.textContent = 'Born on ' + data['birthday-string'];
+        mainCard.appendChild(villagerBday)
+
+        var villagerType = document.createElement('h5')
+        villagerType.textContent = data.personality
+        mainCard.appendChild(villagerType)
+
+        var villagerImg = document.createElement('span')
+        villagerImg.innerHTML = "<img src='" + data.image_uri + "' alt='Image of villager.'>";
+        mainCard.appendChild(villagerImg)
+
+
+    })
 }
 
 //If matches, should kick out that villager's object and properties
