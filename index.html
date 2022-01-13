@@ -16,7 +16,7 @@
       <h3>Animal Crossing New Horizons Villager Database</h3>
     </header>
     <!-- Intro to page -->
-    <section>
+    <section class="three-cards">
       <div class="card welcome" id ="welcomecard" style="width: 300px;">
         <div class="card-divider">
           Hello Welcome!
@@ -25,18 +25,6 @@
           <p>Please use this page to search through the Animal Crossing New Horizon Villagers database. It's simple, just search the villager and get some cool information. Give it a try!</p>
         </div>
       </div>
-       <!-- Search bar -->
-       <form id="search">
-        <div class="grid-container">
-          <!-- <div class="grid-x grid-padding-x"> -->
-            <div class="medium-6 cell">
-              <label>
-                <input type="text" placeholder="Enter villager name">
-                <button class="submit success button">Enter</button>
-              </label>
-            </div>
-          </div>
-        </div>
       <!-- Villager of the Day -->
       <div class="card" id= "vodcard" style="width: 300px;">
         <div class="card-divider">
@@ -45,9 +33,7 @@
         <div class="card-section">
           <p>text</p>
         </div>
-      </div>  
-    </section>
-      </form>
+      </div>
       <!-- Quick List -->
       <div class="card" id="qlcard" style="width: 300px;">
         <div class="card-divider">
@@ -57,7 +43,22 @@
           <p>text</p>
         </div>
       </div>
+    </section>
+      <!-- Search bar -->
+    <form id="search">
+      <div class="grid-container">
+        <!-- <div class="grid-x grid-padding-x"> -->
+          <div class="medium-6 cell">
+            <label>
+              <input type="text" placeholder="Enter villager name">
+              <button class="submit success button">Enter</button>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
       <!-- BDay Card -->
+    <section class="bd">
       <div class="card" id= "bdaycard" style="width: 300px;">
         <div class="card-divider">
           Villager Birthday!
@@ -66,10 +67,13 @@
           <p>text</p>
         </div>
       </div>
-       <div id="mascot">
-          <img src="assets/images/Daisy_Mae_NH.png" alt="Daisy_Mae">
-        </div>
-
+    </section>
+    <section>
+      <div id="mascot">
+        <img src="assets/images/Daisy_Mae_NH.png" alt="Daisy_Mae">
+      </div>
+    </section>
+      
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src = "./assets/script.js"></script>
 </body>
