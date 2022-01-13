@@ -15,21 +15,9 @@
     <header>
       <h3>Animal Crossing New Horizons Villager Database</h3>
     </header>
-          <!-- Search bar -->
-          <form>
-            <div class="grid-container">
-              <div class="grid-x grid-padding-x">
-                <div class="medium-6 cell">
-                  <label>
-                    <input type="text" placeholder="Enter villager name">
-                    <button class="submit success button">Enter</button>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </form>
     <!-- Intro to page -->
-    <div class="card welcome" style="width: 300px;">
+    <section>
+      <div class="card welcome" id ="welcomecard" style="width: 300px;">
         <div class="card-divider">
           Hello Welcome!
         </div>
@@ -37,8 +25,31 @@
           <p>Please use this page to search through the Animal Crossing New Horizon Villagers database. It's simple, just search the villager and get some cool information. Give it a try!</p>
         </div>
       </div>
+       <!-- Search bar -->
+       <form id="search">
+        <div class="grid-container">
+          <!-- <div class="grid-x grid-padding-x"> -->
+            <div class="medium-6 cell">
+              <label>
+                <input type="text" placeholder="Enter villager name">
+                <button class="submit success button">Enter</button>
+              </label>
+            </div>
+          </div>
+        </div>
+      <!-- Villager of the Day -->
+      <div class="card" id= "vodcard" style="width: 300px;">
+        <div class="card-divider">
+          Villager of the Day!
+        </div>
+        <div class="card-section">
+          <p>text</p>
+        </div>
+      </div>  
+    </section>
+      </form>
       <!-- Quick List -->
-      <div class="card" style="width: 300px;">
+      <div class="card" id="qlcard" style="width: 300px;">
         <div class="card-divider">
           Quick List!
         </div>
@@ -47,7 +58,7 @@
         </div>
       </div>
       <!-- BDay Card -->
-      <div class="card" style="width: 300px;">
+      <div class="card" id= "bdaycard" style="width: 300px;">
         <div class="card-divider">
           Villager Birthday!
         </div>
@@ -55,17 +66,9 @@
           <p>text</p>
         </div>
       </div>
-
-      <!-- Villager of the Day -->
-        <div class="card" style="width: 300px;">
-            <div class="card-divider">
-              Villager of the Day!
-            </div>
-            <div class="card-section">
-              <p>text</p>
-            </div>
-          </div>
-      
+       <div id="mascot">
+          <img src="assets/images/Daisy_Mae_NH.png" alt="Daisy_Mae">
+        </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src = "./assets/script.js"></script>

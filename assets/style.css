@@ -18,19 +18,17 @@ header {
     width: 100%;
 }
 
-header h3 {
+h3 {
     font-family: 'Unkempt', cursive;
 }
 
 form {
-    background-color: white;
-    padding: 5px;
-    width: 80%;
+    background-color: rgb(174, 236, 221);
     display: inline-block;
     justify-content: center;
     border-radius: 15px;
     text-align: center;
-    margin: 10px;
+    margin: auto;
     padding: 10px;
 }
 
@@ -38,8 +36,36 @@ input {
     width: 100%;
 }
 
-card welcome {
-
+.card-divider{
+    background-color: rgb(67, 161, 146);
+    justify-content: center;
+    text-align: center;
+}
+#mascot{
+    display: flex;
+    padding: 20px;
+    right:20px;
+}
+#welcomecard{
+    padding: 10px;
+}
+/* #search{
+    margin:auto;
+} */
+#qlcard{
+  position: absolute;
+  left:5px;
+  padding: 10px;
+}
+#bdaycard{
+    position:absolute;
+    right:20px;
+    padding:10px;
+}
+#vodcard{
+    position:absolute;
+    right:5px;
+    padding:10px;
 }
 
 
