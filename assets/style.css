@@ -55,12 +55,8 @@ input {
 #mascot{
     position: absolute;
     padding: 20px;
-<<<<<<< HEAD
-    /* right:20px; */
-=======
     right:20px;
     bottom: 20px;
->>>>>>> dev
 }
 #welcomecard{
     padding: 10px;
