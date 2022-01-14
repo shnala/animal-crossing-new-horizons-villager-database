@@ -112,9 +112,9 @@ function queryRender(queryString) {
         var body = document.querySelector('body')
 
         //This commented-out variable will be the actual main-card once repo is updated.
-        var mainCard = document.querySelector('#main-card')
+        var mainCard = document.querySelector('#maincard')
         // var mainCard = document.createElement('div') 
-        // body.appendChild(mainCard)
+        body.appendChild(mainCard)
 
         var villagerName = document.createElement('h3')
         villagerName.textContent = data.name['name-USen']
@@ -217,7 +217,23 @@ function queryRender(queryString) {
     })
 }
 
-
+function amiiboImage (){
+    var amiiboQuery = searchBar.value
+    var amiiboApiUrl = "https://www.amiiboapi.com/api/amiibo/?name=" + amiiboQuery;
+        console.log(amiiboApiUrl)
+    fetch (amiiboApiUrl)
+    .then(function (response){
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data)
+        var inputImg = data.amiibo[0].image;
+        var amiiboSection = document.querySelector('#maincard');
+        console.log(data.amiibo[0].image)
+        // img.src = data.amiibo[0].image;
+        amiiboSection.appendChild(inputImg)
+    })
+}
 //TODO: saveButton is not currently defined. Once mainCard is made in HTML and a button has been
 //inserted, grab it in JS and assign it the var saveButton.
 // saveButton.addEventListener('click', saveToQuickList)
