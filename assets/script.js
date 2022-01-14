@@ -100,8 +100,11 @@ function queryRender(queryString) {
         var mainCard = document.querySelector('#maincard')
 
         mainCard.innerHTML = ''
+
+
         amiiboImage();
         
+
         var villagerName = document.createElement('h3')
         villagerName.textContent = data.name['name-USen']
         mainCard.appendChild(villagerName)
@@ -158,7 +161,7 @@ function queryRender(queryString) {
         mainCard.appendChild(saveButton)
         saveButton.addEventListener('click', saveToQuickList)
 
-               
+                
 //TODO: Entries on the quicklist should be clickable. When clicked, that villager's id is 
 //appended once again to the queryString variable, which gets fed back into the queryRender
 //function, which will then render that villager's bio on the main card.
@@ -191,13 +194,26 @@ function queryRender(queryString) {
                 villagerSaved.push(villagerKey);
                 localStorage.setItem("quicklist", JSON.stringify(villagerSaved));
 
+<<<<<<< HEAD
+=======
+                //TODO: Click must call villager to be rendered on main card.
+                qlItem.addEventListener('click', testClick)
+                console.log(qlItem)
+                console.log(villagerSaved);
+                //reverse array again before feeding back into onLoad; villagerSaved.reverse()
+                //TODO: YOU WERE HERE.
+>>>>>>> dev
         }
         
     })
 }
 
+
+
+
 // function for amiibo
 function amiiboImage () {
+
     var amiiboQuery = searchBar.value
     var amiiboApiUrl = "https://www.amiiboapi.com/api/amiibo/?name=" + amiiboQuery;
         console.log(amiiboApiUrl)
@@ -207,6 +223,7 @@ function amiiboImage () {
     })
     .then(function (data) {
         console.log(data)
+
         var amiiboSection = document.querySelector('#maincard');
         var amiiboImg = document.createElement('span');
         amiiboImg.innerHTML = "<img src='" + data.amiibo[0].image + "' alt='amiibo-card for searched character'>";
@@ -214,6 +231,7 @@ function amiiboImage () {
         amiiboSection.appendChild(amiiboImg)
     })
 }
+
 
 function testClick() {
     console.log('Working')
