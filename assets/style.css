@@ -37,7 +37,7 @@ input {
 }
 
 .card-divider{
-    background-color: rgb(67, 161, 146);
+    background-color: rgb(68, 165, 149);
     border-radius: 10px;
     justify-content: center;
     text-align: center;
@@ -51,8 +51,19 @@ input {
 .main {
     position: absolute;
     right: 34%;
-    bottom: 0;
-    margin: auto;
+    top: 20%;
+}
+
+.right {
+    flex-wrap: wrap;
+    text-align: left;
+    border-right: 3px solid lightcoral;
+}
+
+.left {
+    flex-wrap: wrap;
+    /* text-align: left; */
+    border-left: 3px solid lightcoral;
 }
 
 .three-cards {
@@ -82,11 +93,26 @@ input {
   padding:10px;
 }
 #mascot{
-    position: absolute;
+    position: fixed;
     padding: 20px;
     left: 20px;
     bottom: 20px;
 }
+
+
+.card-divider {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    padding: 1rem;
+    background: #e6e6e6; }
+
+
 
 @media screen and (max-width: 50%) {
     
