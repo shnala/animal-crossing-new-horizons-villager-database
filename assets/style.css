@@ -54,6 +54,14 @@ input {
     bottom: 0;
 }
 
+.right {
+    vertical-align: right;
+}
+
+.left {
+    vertical-align: left;
+}
+
 .three-cards {
     position: absolute;
     right: 20px;
@@ -80,6 +88,21 @@ input {
     left: 20px;
     bottom: 20px;
 }
+
+
+.card-divider {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    padding: 1rem;
+    background: #e6e6e6; }
+
+
 
 @media screen and (max-width: 50%) {
     
