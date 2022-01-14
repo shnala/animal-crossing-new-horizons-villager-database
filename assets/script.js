@@ -111,20 +111,7 @@ function queryRender(queryString) {
         mainCardContainer.style.display = "block";        
         var mainCard = document.querySelector('#maincard')
 
-<<<<<<< HEAD
-        //TODO: This body variable is a placeholder until a proper container with an id is made on the html.
-        //TODO: Will need to nuke container with innerHtml once it is created so that new queries
-        //do not compound in mainCard. The nuke should be run every time a new search is made. 
-        //Take care to not nuke any id's or buttons.
-        var body = document.querySelector('body')
-
-        //This commented-out variable will be the actual main-card once repo is updated.
-        var mainCard = document.querySelector('#maincard')
-        // var mainCard = document.createElement('div') 
-        body.appendChild(mainCard)
-=======
         mainCard.innerHTML = ''
->>>>>>> 811fb278aa48cd004568c71e568b2b8c94e9f60a
 
         var villagerName = document.createElement('h3')
         villagerName.textContent = data.name['name-USen']
@@ -182,7 +169,7 @@ function queryRender(queryString) {
         mainCard.appendChild(saveButton)
         saveButton.addEventListener('click', saveToQuickList)
 
-               
+                
 //TODO: Entries on the quicklist should be clickable. When clicked, that villager's id is 
 //appended once again to the queryString variable, which gets fed back into the queryRender
 //function, which will then render that villager's bio on the main card.
@@ -213,40 +200,20 @@ function queryRender(queryString) {
                 villagerSaved = JSON.parse(localStorage.getItem("quicklist")) || []
                 villagerSaved.push(villagerKey);
                 localStorage.setItem("quicklist", JSON.stringify(villagerSaved));
-                
+
                 //TODO: Click must call villager to be rendered on main card.
                 qlItem.addEventListener('click', testClick)
                 console.log(qlItem)
-
         }
         
     })
 }
 
-<<<<<<< HEAD
-function amiiboImage (){
-    var amiiboQuery = searchBar.value
-    var amiiboApiUrl = "https://www.amiiboapi.com/api/amiibo/?name=" + amiiboQuery;
-        console.log(amiiboApiUrl)
-    fetch (amiiboApiUrl)
-    .then(function (response){
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data)
-        var inputImg = data.amiibo[0].image;
-        var amiiboSection = document.querySelector('#maincard');
-        console.log(data.amiibo[0].image)
-        // img.src = data.amiibo[0].image;
-        amiiboSection.appendChild(inputImg)
-    })
-}
-=======
+
 function testClick() {
     console.log('Working')
 }
 
->>>>>>> 811fb278aa48cd004568c71e568b2b8c94e9f60a
 //TODO: saveButton is not currently defined. Once mainCard is made in HTML and a button has been
 //inserted, grab it in JS and assign it the var saveButton.
 // saveButton.addEventListener('click', saveToQuickList)
@@ -254,7 +221,6 @@ searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
 
 console.log(villagerSaved)
-
 onLoad();
 
 //________________________Legacy Code/Notes________________________________
