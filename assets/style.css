@@ -55,14 +55,14 @@ input {
 }
 
 .right {
-    flex-wrap: wrap;
-    text-align: left;
+    flex: row;
+    text-align: right;
     border-right: 3px solid lightcoral;
 }
 
 .left {
-    flex-wrap: wrap;
-    /* text-align: left; */
+    flex: row;
+    text-align: left;
     border-left: 3px solid lightcoral;
 }
 
