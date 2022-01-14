@@ -11,7 +11,7 @@
 
 var villagerId = ''
 var villagerApiUrl = 'https://acnhapi.com/v1a/villagers/'
-var villagerSaved = []
+var villagerSavedGlobal = []
 //These querySelector's will need to be updated if more buttons/input fields are added
 //to the HTML page.
 var searchBar = document.querySelector('input')
@@ -23,13 +23,16 @@ var searchButton = document.querySelector('.success')
 //to [data]. This will require a foreach loop
 function onLoad() {
     var history = JSON.parse(localStorage.getItem("quicklist"))
-    console.log(history);
+    // console.log(history);
 
     var recentHistory = history.reverse();
-    console.log(recentHistory);
+    // console.log(recentHistory);
 
     recentHistory.length = 5;
     console.log(recentHistory);
+
+    villagerSavedGlobal.push(recentHistory);
+    console.log(villagerSavedGlobal);
 
             // //____________paste divider______________
             // //TODO: Remove this block when static quicklist ID has been implemented on HTML.
@@ -67,6 +70,7 @@ function onLoad() {
 
             //TODO: Click must call villager to be rendered on main card.
             qlItem.addEventListener('click', testClick)
+            console.log(recentHistory)
             
             //_______________________paste divider____________________
 
@@ -79,7 +83,7 @@ function handleSearchSubmit(event) {
     event.preventDefault();
     var query = searchBar.value
     //queryString will not work until villagerId can be grabbed from API using input from user's search.
-
+    
     fetch(villagerApiUrl)
     .then(function (response) {
         return response.json();
@@ -96,6 +100,7 @@ function handleSearchSubmit(event) {
         queryRender(queryString);
 
     })
+    
    
 }
 
@@ -112,7 +117,8 @@ function queryRender(queryString) {
         var mainCard = document.querySelector('#maincard')
 
         mainCard.innerHTML = ''
-
+        amiiboImage();
+        
         var villagerName = document.createElement('h3')
         villagerName.textContent = data.name['name-USen']
         mainCard.appendChild(villagerName)
@@ -175,6 +181,7 @@ function queryRender(queryString) {
 //function, which will then render that villager's bio on the main card.
 //TODO: Currently, saveToQuickList will overwrite items generated from local storage. This might be 
 //fixed by having the function call the onLoad function again after the array has been updated.
+//Have saveToQuickList update the array instead of generate new elements, and then call onLoad.
 
         function saveToQuickList() {
 
@@ -204,9 +211,30 @@ function queryRender(queryString) {
                 //TODO: Click must call villager to be rendered on main card.
                 qlItem.addEventListener('click', testClick)
                 console.log(qlItem)
-
+                console.log(villagerSaved);
+                //reverse array again before feeding back into onLoad; villagerSaved.reverse()
+                //TODO: YOU WERE HERE.
         }
         
+    })
+}
+
+// function for amiibo
+function amiiboImage () {
+    var amiiboQuery = searchBar.value
+    var amiiboApiUrl = "https://www.amiiboapi.com/api/amiibo/?name=" + amiiboQuery;
+        console.log(amiiboApiUrl)
+    fetch (amiiboApiUrl)
+    .then(function (response){
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data)
+        var amiiboSection = document.querySelector('#maincard');
+        var amiiboImg = document.createElement('span');
+        amiiboImg.innerHTML = "<img src='" + data.amiibo[0].image + "' alt='amiibo-card for searched character'>";
+        // console.log(data.amiibo[0].image)
+        amiiboSection.appendChild(amiiboImg)
     })
 }
 
@@ -220,7 +248,7 @@ function testClick() {
 searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
 
-console.log(villagerSaved)
+// console.log(villagerSavedGlobal)
 
 onLoad();
 
