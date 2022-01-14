@@ -117,16 +117,11 @@ function queryRender(queryString) {
         var mainCard = document.querySelector('#maincard')
 
         mainCard.innerHTML = ''
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 811fb278aa48cd004568c71e568b2b8c94e9f60a
->>>>>>> dev
 
-=======
+
         amiiboImage();
         
->>>>>>> e9b38bc8b86a7269314fd4f8f44bd80371ea1549
+
         var villagerName = document.createElement('h3')
         villagerName.textContent = data.name['name-USen']
         mainCard.appendChild(villagerName)
@@ -219,27 +214,20 @@ function queryRender(queryString) {
                 //TODO: Click must call villager to be rendered on main card.
                 qlItem.addEventListener('click', testClick)
                 console.log(qlItem)
-<<<<<<< HEAD
-=======
                 console.log(villagerSaved);
                 //reverse array again before feeding back into onLoad; villagerSaved.reverse()
                 //TODO: YOU WERE HERE.
->>>>>>> dev
         }
         
     })
 }
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-function amiiboImage (){
-=======
+
+
 // function for amiibo
 function amiiboImage () {
->>>>>>> e9b38bc8b86a7269314fd4f8f44bd80371ea1549
+
     var amiiboQuery = searchBar.value
     var amiiboApiUrl = "https://www.amiiboapi.com/api/amiibo/?name=" + amiiboQuery;
         console.log(amiiboApiUrl)
@@ -249,16 +237,7 @@ function amiiboImage () {
     })
     .then(function (data) {
         console.log(data)
-<<<<<<< HEAD
-        var inputImg = data.amiibo[0].image;
-        var amiiboSection = document.querySelector('#maincard');
-        console.log(data.amiibo[0].image)
-        // img.src = data.amiibo[0].image;
-        amiiboSection.appendChild(inputImg)
-    })
-}
-=======
-=======
+
         var amiiboSection = document.querySelector('#maincard');
         var amiiboImg = document.createElement('span');
         amiiboImg.innerHTML = "<img src='" + data.amiibo[0].image + "' alt='amiibo-card for searched character'>";
@@ -267,8 +246,7 @@ function amiiboImage () {
     })
 }
 
->>>>>>> e9b38bc8b86a7269314fd4f8f44bd80371ea1549
->>>>>>> dev
+
 function testClick() {
     console.log('Working')
 }
@@ -279,12 +257,8 @@ function testClick() {
 searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
 
-<<<<<<< HEAD
-console.log(villagerSaved)
-=======
 // console.log(villagerSavedGlobal)
 
->>>>>>> dev
 onLoad();
 
 //________________________Legacy Code/Notes________________________________
