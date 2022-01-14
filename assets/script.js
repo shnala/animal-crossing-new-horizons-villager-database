@@ -112,9 +112,9 @@ function queryRender(queryString) {
         var body = document.querySelector('body')
 
         //This commented-out variable will be the actual main-card once repo is updated.
-        // var mainCard = document.querySelector('#main-card')
-        var mainCard = document.createElement('div') 
-        body.appendChild(mainCard)
+        var mainCard = document.querySelector('#main-card')
+        // var mainCard = document.createElement('div') 
+        // body.appendChild(mainCard)
 
         var villagerName = document.createElement('h3')
         villagerName.textContent = data.name['name-USen']
