@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unkempt&display=swap" rel="stylesheet">
+    <title>Villager Database</title>
+</head>
+<body>
+    <header>
+      <h3>Animal Crossing New Horizons Villager Database</h3>
+    </header>
+    <!-- Intro to page -->
+    <section class="one-card">
+      <div class="card welcome" id ="welcomecard" style="width: 300px;">
+        <div class="card-divider">
+          Hello Welcome!
+        </div>
+        <div class="card-section">
+          <p>Please use this page to search through the Animal Crossing New Horizon Villagers database. It's simple, just search the villager and get some cool information. Give it a try!</p>
+        </div>
+      </div>
+      
+    </section>
+      <!-- Search bar -->
+    <form id="search">
+      <div class="grid-container">
+          <div class="medium-6 cell">
+            <label>
+              <input type="text" placeholder="Enter villager name">
+              <button class="submit success button">Enter</button>
+            </label>
+          </div>
+      </div>
+    </form>
+      <!-- Main Card -->
+    <section class="main " id="main-card">
+      <div class="card" id="maincard" style="width: 600px; height: 650px;">
+        <div class="card-section">
+          <p>character info goes here</p>
+        </div>
+      </div>
+    </section>
+    <section class="three-cards">
+      <!-- Quick List -->
+      <div class="card" id="qlcard" style="width: 300px;">
+        <div class="card-divider">
+          Quick List!
+        </div>
+        <div class="card-section">
+          <ul id="quicklist"></ul>
+        </div>
+      </div>
+      <!-- BDay Card -->
+      <div class="card" id= "bdaycard" style="width: 300px;">
+        <div class="card-divider">
+          Villager Birthday!
+        </div>
+        <div class="card-section">
+          <p></p>
+        </div>
+      </div>
+      <!-- Villager of the Day -->
+      <div class="card" id= "vodcard" style="width: 300px;">
+        <div class="card-divider">
+          Villager of the Day!
+        </div>
+        <div class="card-section">
+          <p>text</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div id="mascot">
+        <img src="assets/images/Daisy_Mae_NH.png" alt="Daisy_Mae">
+      </div>
+    </section>
+      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src = "./assets/script.js"></script>
+</body>
+</html>
