@@ -65,9 +65,15 @@ input {
 #maincard{
     padding: 10px;
 }
+#main-card {
+    display: none;
+}
 #qlcard{
     padding: 10px;
   }
+.list-item {
+    cursor: pointer;
+}
 #bdaycard{
     padding:10px;
 }
