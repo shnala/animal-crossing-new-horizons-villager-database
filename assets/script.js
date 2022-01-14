@@ -194,15 +194,12 @@ function queryRender(queryString) {
                 villagerSaved.push(villagerKey);
                 localStorage.setItem("quicklist", JSON.stringify(villagerSaved));
 
-<<<<<<< HEAD
-=======
                 //TODO: Click must call villager to be rendered on main card.
                 qlItem.addEventListener('click', testClick)
                 console.log(qlItem)
                 console.log(villagerSaved);
                 //reverse array again before feeding back into onLoad; villagerSaved.reverse()
                 //TODO: YOU WERE HERE.
->>>>>>> dev
         }
         
     })
