@@ -12,6 +12,8 @@
 var villagerId = ''
 var villagerApiUrl = 'https://acnhapi.com/v1a/villagers/'
 var villagerSavedGlobal = []
+var quickListContainer = document.querySelector('#quicklist')
+
 //These querySelector's will need to be updated if more buttons/input fields are added
 //to the HTML page.
 var searchBar = document.querySelector('input')
@@ -50,10 +52,12 @@ function onLoad() {
 
             var quickListContainer = document.querySelector('#quicklist')
             var qlItem = document.createElement('li');
-            var qlButton = document.createElement('button');
+            // var qlButton = document.createElement('button');
             // qlButton.setAttribute('value', data.name['name-USen'])
 
             qlItem.classList.add("list-item");
+            qlItem.setAttribute("vill-id", data.id)
+            qlItem.setAttribute("vill-name", data.name['name-USen'])
             // qlItem.textContent = data.name['name-USen']
             //This was my attempt to call the function within HTML and apply the loadstring variable so that
             //each list item was rendered with an appropriate API call that would render their info. 
@@ -61,7 +65,8 @@ function onLoad() {
             //have an argument in the parentheses. Putting this note here for later reference.
             //TODO: Onclick, call the handleSearchSubmit function and feed the villager name
             //as an argument.
-            qlItem.innerHTML = '<button class = "ql-button" value = "' + data.name['name-USen'] + '">' + data.name['name-USen'] + '</button>'
+            // qlItem.innerHTML = '<button class = "ql-button" id = "' + data.name['name-USen'] + '">' + data.name['name-USen'] + '</button>'
+            qlItem.innerText = data.name['name-USen']
             quickListContainer.appendChild(qlItem)
             // qlButton.appendChild(qlItem)
 
@@ -82,12 +87,17 @@ function onLoad() {
             //     console.log(getName)
             // })
             
-            // qlItem.addEventListener('click', queryRender(loadString))
+            // var quickId = qlItem.getAttribute("vill-id")
+            // var quickUrl = villagerApiUrl + quickId
+            // console.log(quickId)
+            // qlItem.addEventListener('click', quickLoad(quickUrl))
 
             })
     }
-    
+  
 }
+
+
 
 //TODO: More quicklist stuff to remove.
 // quickButton.addEventListener('click', function() {
@@ -116,6 +126,7 @@ function handleSearchSubmit(event) {
         console.log(villagerId);
         // console.log(apiVillagerInfo[0]);
         queryRender(queryString);
+        amiiboImage(query);
 
     })
     
@@ -133,7 +144,7 @@ function queryRender(queryString) {
         var mainCardContainer = document.querySelector('#main-card')
         mainCardContainer.style.display = "block";        
 
-        var mainCard = document.querySelector('#maincard')
+        // var mainCard = document.querySelector('#maincard')
         var mainCardTop = document.querySelector('#main-top')
         var mainCardRight = document.querySelector('#main-right')
         var mainCardLeft = document.querySelector('#main-left')
@@ -143,7 +154,7 @@ function queryRender(queryString) {
         mainCardLeft.innerHTML = ''
 
 
-        amiiboImage();
+        // amiiboImage();
         
 
         var villagerName = document.createElement('h3')
@@ -211,12 +222,13 @@ function queryRender(queryString) {
 
         function saveToQuickList() {
 
-                var quickListContainer = document.querySelector('#quicklist')
                 // var quicklistEl = document.createElement('ul')
                 // quickListContainer.appendChild(quicklistEl)
 
                 var qlItem = document.createElement('li')
                 qlItem.classList.add("list-item");
+                qlItem.setAttribute("vill-id", data.id)
+                qlItem.setAttribute("vill-name", data.name['name-USen'])    
                 qlItem.textContent = data.name['name-USen']
                 quickListContainer.appendChild(qlItem)
 
@@ -240,10 +252,10 @@ function queryRender(queryString) {
 
 
 // function for amiibo
-function amiiboImage () {
+function amiiboImage (query) {
 
-    var amiiboQuery = searchBar.value
-    var amiiboApiUrl = "https://www.amiiboapi.com/api/amiibo/?name=" + amiiboQuery;
+    // var amiiboQuery = searchBar.value
+    var amiiboApiUrl = "https://www.amiiboapi.com/api/amiibo/?name=" + query;
         console.log(amiiboApiUrl)
     fetch (amiiboApiUrl)
     .then(function (response){
@@ -291,6 +303,22 @@ function amiiboImage () {
 //     var getName = quickButton.getAttribute('value')
 //     console.log(getName)
 // }
+
+quickListContainer.addEventListener("click", function(event) {
+    var element = event.target
+
+    if (element.matches("li") === true) {
+        var grabId = element.getAttribute("vill-id");
+        var quickUrl = villagerApiUrl + grabId
+        var amiiboName = element.getAttribute("vill-name")
+        console.log(amiiboName);
+        queryRender(quickUrl);
+        amiiboImage(amiiboName)
+        //TODO: Need to correctly call amiibo function. Currently embedded within
+        //queryRender and gets called without a 'name' value. Requires a 'name' 
+        //value to render properly.
+    }
+})
 
 searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
