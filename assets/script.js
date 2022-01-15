@@ -307,7 +307,10 @@ function amiiboImage (query) {
 quickListContainer.addEventListener("click", function(event) {
     var element = event.target
 
-    if (element.matches("li") === true) {
+    //TODO: Slightly buggy. Clicking villager icon doesn't render their bio. This is because
+    //this eventlistener grabs values from the list item, whereas there are no values associated
+    //with the img.
+    if (element.matches("li") || element.matches("img") === true) {
         var grabId = element.getAttribute("vill-id");
         var quickUrl = villagerApiUrl + grabId
         var amiiboName = element.getAttribute("vill-name")
