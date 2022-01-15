@@ -29,6 +29,7 @@
       
     </section>
       <!-- Search bar -->
+  <section>
     <form id="search">
       <div class="grid-container">
           <div class="medium-6 cell">
@@ -39,17 +40,28 @@
           </div>
       </div>
     </form>
+
       <!-- Main Card -->
     <section class="main " id="main-card">
-      <div class="card" id="maincard" style="width: 600px; height: 650px;">
+      <!-- Currently, this is the div that gets nuked in JS. -->
+      <div class="card" id="maincard" style="width: 600px;">
+
+        <div id="main-top">  
+        </div>
+        
         <div class="card-divider vertical menu align-right">
         </div>
-        <div class="card-section right">
+
+        <div id="main-right" class="card-section right">
         </div>
-        <div class="card-section left">
+        
+        <div id="main-left" class="card-section left">
         </div>
       </div>
+
     </section>
+  </section>
+
     <section class="three-cards">
       <!-- Quick List -->
       <div class="card" id="qlcard" style="width: 300px;">

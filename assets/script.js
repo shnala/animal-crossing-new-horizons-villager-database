@@ -19,8 +19,8 @@ var searchButton = document.querySelector('.success')
 
 
 //Loads the five most recently saved villagers to quicklist.
-//TODO: In order for this to render saved villagers to quicklist on load, it needs access
-//to [data]. This will require a foreach loop
+//TODO: When villagers from quicklist are loaded, their amiibo cards aren't loaded
+//because the amiibo function relies on the query provided by the user.
 function onLoad() {
     var history = JSON.parse(localStorage.getItem("quicklist"))
     // console.log(history);
@@ -33,14 +33,6 @@ function onLoad() {
 
     villagerSavedGlobal.push(recentHistory);
     console.log(villagerSavedGlobal);
-
-            // //____________paste divider______________
-            // //TODO: Remove this block when static quicklist ID has been implemented on HTML.
-            // var quickListContainer = document.querySelector('#qlcard')
-            // var quicklistEl = document.createElement('ul')
-            // quickListContainer.appendChild(quicklistEl)
-            // //___________paste divider_______________
-
     
     for (let i = 0; i < recentHistory.length; i++) {
 
@@ -48,48 +40,74 @@ function onLoad() {
             var loadString = villagerApiUrl + loadId
             console.log(loadString);
 
+
             fetch(loadString)
             .then(function (response) {
                 return response.json();
             })
             .then(function(data) {
                 console.log(data)
-            
-            //______________________paste divider_____________________
 
             var quickListContainer = document.querySelector('#quicklist')
             var qlItem = document.createElement('li');
+            var qlButton = document.createElement('button');
+            // qlButton.setAttribute('value', data.name['name-USen'])
+
             qlItem.classList.add("list-item");
-            qlItem.textContent = data.name['name-USen']
+            // qlItem.textContent = data.name['name-USen']
+            //This was my attempt to call the function within HTML and apply the loadstring variable so that
+            //each list item was rendered with an appropriate API call that would render their info. 
+            //However, it doesn't work because when you call a function in HTML, you cannot 
+            //have an argument in the parentheses. Putting this note here for later reference.
+            //TODO: Onclick, call the handleSearchSubmit function and feed the villager name
+            //as an argument.
+            qlItem.innerHTML = '<button class = "ql-button" value = "' + data.name['name-USen'] + '">' + data.name['name-USen'] + '</button>'
             quickListContainer.appendChild(qlItem)
+            // qlButton.appendChild(qlItem)
 
             var qlItemIcon = document.createElement('span')
-            //TODO: Set dimensions of icon to not be oversized.
             qlItemIcon.innerHTML = "<img src='" + data.icon_uri + "' width='48' height='48' alt='Icon of villager.'>";
             qlItem.appendChild(qlItemIcon)
-
-            //TODO: Click must call villager to be rendered on main card.
-            qlItem.addEventListener('click', testClick)
-            console.log(recentHistory)
             
-            //_______________________paste divider____________________
+
+            //TODO: Everything commented out below is from my attempts to get the quicklist to work
+            //the way it should. Remove or fix later.
+            // var quickButton = document.querySelector('.ql-button')
+            // var getName = quickButton.getAttribute('value')
+            // console.log(getName)
+
+            // quickButton.addEventListener('click', testClick)
+            //     var quickButton = document.querySelector('.ql-button')
+            //     var getName = quickButton.getAttribute('value')
+            //     console.log(getName)
+            // })
+            
+            // qlItem.addEventListener('click', queryRender(loadString))
 
             })
     }
     
 }
 
+//TODO: More quicklist stuff to remove.
+// quickButton.addEventListener('click', function() {
+//     var quickButton = document.querySelector('.ql-button')
+//     var getName = quickButton.getAttribute('value')
+//     console.log(getName)
+// })
+
+
+
 function handleSearchSubmit(event) {
     event.preventDefault();
     var query = searchBar.value
-    //queryString will not work until villagerId can be grabbed from API using input from user's search.
     
     fetch(villagerApiUrl)
     .then(function (response) {
         return response.json();
     })
     .then(function(data) {
-        console.log(data)        
+        // console.log(data)        
         var apiVillagerInfo = data.filter(villager => villager.name['name-USen'] === query)
         var villagerId = apiVillagerInfo[0].id;
         var queryString = villagerApiUrl + villagerId
@@ -114,9 +132,15 @@ function queryRender(queryString) {
         console.log(data);
         var mainCardContainer = document.querySelector('#main-card')
         mainCardContainer.style.display = "block";        
-        var mainCard = document.querySelector('#maincard')
 
-        mainCard.innerHTML = ''
+        var mainCard = document.querySelector('#maincard')
+        var mainCardTop = document.querySelector('#main-top')
+        var mainCardRight = document.querySelector('#main-right')
+        var mainCardLeft = document.querySelector('#main-left')
+
+        mainCardTop.innerHTML = ''
+        mainCardRight.innerHTML = ''
+        mainCardLeft.innerHTML = ''
 
 
         amiiboImage();
@@ -124,27 +148,27 @@ function queryRender(queryString) {
 
         var villagerName = document.createElement('h3')
         villagerName.textContent = data.name['name-USen']
-        mainCard.appendChild(villagerName)
+        mainCardTop.appendChild(villagerName)
 
         var villagerSpecies = document.createElement('h5')
         villagerSpecies.textContent = data.species
-        mainCard.appendChild(villagerSpecies)
+        mainCardRight.appendChild(villagerSpecies)
 
         var villagerGender = document.createElement('h5')
         villagerGender.textContent = data.gender
-        mainCard.appendChild(villagerGender)
+        mainCardRight.appendChild(villagerGender)
 
         var villagerBday = document.createElement('h5')
         villagerBday.textContent = 'Born on ' + data['birthday-string'];
-        mainCard.appendChild(villagerBday)
+        mainCardRight.appendChild(villagerBday)
 
         var villagerType = document.createElement('h5')
         villagerType.textContent = data.personality
-        mainCard.appendChild(villagerType)
+        mainCardRight.appendChild(villagerType)
 
         var villagerImg = document.createElement('span')
         villagerImg.innerHTML = "<img src='" + data.image_uri + "' alt='Image of villager.'>";
-        mainCard.appendChild(villagerImg)
+        mainCardLeft.appendChild(villagerImg)
 
         var villagerMottoEl = document.createElement('div')
         var villagerMotto = document.createElement('span')
@@ -153,7 +177,7 @@ function queryRender(queryString) {
         villagerMottoTag.textContent = 'Motto: '
         villagerMottoEl.appendChild(villagerMottoTag)
         villagerMottoTag.appendChild(villagerMotto)
-        mainCard.appendChild(villagerMottoEl)
+        mainCardTop.appendChild(villagerMottoEl)
         
         var villagerPhraseEl = document.createElement('div')
         var villagerPhrase = document.createElement('span')
@@ -162,7 +186,7 @@ function queryRender(queryString) {
         villagerPhraseTag.textContent = 'Catch-Phrase: '
         villagerPhraseTag.appendChild(villagerPhrase)
         villagerPhraseEl.appendChild(villagerPhraseTag)
-        mainCard.appendChild(villagerPhraseEl)
+        mainCardRight.appendChild(villagerPhraseEl)
         
         var villagerHobbyEl = document.createElement('div')
         var villagerHobby = document.createElement('span')
@@ -171,20 +195,19 @@ function queryRender(queryString) {
         villagerHobbyTag.textContent = 'Hobby: '
         villagerHobbyTag.appendChild(villagerHobby)
         villagerHobbyEl.appendChild(villagerHobbyTag)
-        mainCard.appendChild(villagerHobbyEl)
+        mainCardRight.appendChild(villagerHobbyEl)
 
         var saveButton = document.createElement('button')
         saveButton.textContent = 'Save'
-        mainCard.appendChild(saveButton)
+        mainCardTop.appendChild(saveButton)
         saveButton.addEventListener('click', saveToQuickList)
 
                 
 //TODO: Entries on the quicklist should be clickable. When clicked, that villager's id is 
 //appended once again to the queryString variable, which gets fed back into the queryRender
 //function, which will then render that villager's bio on the main card.
-//TODO: Currently, saveToQuickList will overwrite items generated from local storage. This might be 
-//fixed by having the function call the onLoad function again after the array has been updated.
-//Have saveToQuickList update the array instead of generate new elements, and then call onLoad.
+//TODO: 
+//Idea: Have saveToQuickList update the array instead of generate new elements, and then call onLoad.
 
         function saveToQuickList() {
 
@@ -199,7 +222,7 @@ function queryRender(queryString) {
 
                 var qlItemIcon = document.createElement('span')
                 //TODO: Set dimensions of icon to not be oversized.
-                qlItemIcon.innerHTML = "<img src='" + data.icon_uri + "' alt='Icon of villager.'>";
+                qlItemIcon.innerHTML = "<img src='" + data.icon_uri + "' width='48' height='48' alt='Icon of villager.'>";
                 qlItem.appendChild(qlItemIcon)
         
                 var villagerKey = {
@@ -210,19 +233,10 @@ function queryRender(queryString) {
                 villagerSaved = JSON.parse(localStorage.getItem("quicklist")) || []
                 villagerSaved.push(villagerKey);
                 localStorage.setItem("quicklist", JSON.stringify(villagerSaved));
-
-                //TODO: Click must call villager to be rendered on main card.
-                qlItem.addEventListener('click', testClick)
-                console.log(qlItem)
-                console.log(villagerSaved);
-                //reverse array again before feeding back into onLoad; villagerSaved.reverse()
-                //TODO: YOU WERE HERE.
         }
         
     })
 }
-
-
 
 
 // function for amiibo
@@ -238,7 +252,7 @@ function amiiboImage () {
     .then(function (data) {
         console.log(data)
 
-        var amiiboSection = document.querySelector('#maincard');
+        var amiiboSection = document.querySelector('#main-left');
         var amiiboImg = document.createElement('span');
         amiiboImg.innerHTML = "<img src='" + data.amiibo[0].image + "' alt='amiibo-card for searched character'>";
         // console.log(data.amiibo[0].image)
@@ -246,14 +260,38 @@ function amiiboImage () {
     })
 }
 
+// TODO: Remove this later. Was working on allowing user to click on quick-list.
+// function testClick() {
+//     console.log('Working')
+//     var quickButton = document.querySelector('.ql-button')
+//     quickButton.addEventListener('click', quickRender)
+//     function quickRender() {
+//     var getName = quickButton.getAttribute('value')
+//     console.log(getName)
+// }
 
-function testClick() {
-    console.log('Working')
-}
+//     qlItem = document.querySelector('list-item')
+//     villagerSaved = JSON.parse(localStorage.getItem("quicklist")) || []
+//     console.log(qlItem)
+//     qlItem.addEventListener('click', queryRender(villagerApiUrl + data.id))
 
-//TODO: saveButton is not currently defined. Once mainCard is made in HTML and a button has been
-//inserted, grab it in JS and assign it the var saveButton.
-// saveButton.addEventListener('click', saveToQuickList)
+//     TODO: Click must call villager to be rendered on main card.
+//                 queryString = villagerApiUrl + data.id
+//                 qlItem.addEventListener('click', queryRender(villagerApiUrl + data.id))
+//                 console.log(queryString)
+//                 queryRender(queryString)
+
+//                 console.log(villagerSaved);
+//                 Old solution: reverse array again before feeding back into onLoad; villagerSaved.reverse()
+// }
+
+// var quickButton = document.querySelector('.ql-button')
+// quickButton.addEventListener('click', quickRender)
+// function quickRender() {
+//     var getName = quickButton.getAttribute('value')
+//     console.log(getName)
+// }
+
 searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
 
