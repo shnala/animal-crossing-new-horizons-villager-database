@@ -1,6 +1,4 @@
 * {
-    margin: 0;
-    padding: 0;
     font-family: 'Unkempt', cursive;
 }
 
@@ -54,16 +52,21 @@ input {
     top: 20%;
 }
 
-.right {
-    flex: row;
-    text-align: right;
-    border-right: 3px solid lightcoral;
+.vertical {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    
 }
-
-.left {
-    flex: row;
-    text-align: left;
-    border-left: 3px solid lightcoral;
+#left{
+    margin-left: 0;
+    border-right: 3px solid blue;
+    width: 30%;
+}
+#right{
+    margin-right: 0;
+    border-left: 3px solid blue;
+    width: 30%;
 }
 
 .three-cards {
@@ -99,21 +102,56 @@ input {
     bottom: 20px;
 }
 
-
-.card-divider {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 1 auto;
-        -ms-flex: 0 1 auto;
-            flex: 0 1 auto;
-    padding: 1rem;
-    background: #e6e6e6; }
-
-
-
-@media screen and (max-width: 50%) {
-    
+/* @media screen and (max-width: 74.9375em) {
+    .one-card {
+        position: absolute;
+        left: 20px;
+    }
+    form {
+        position: static;
+        margin: 0;
+        width: 20%;
+        text-align: center;
+    }
+    .main {
+        position: absolute;
+        right: 34%;
+        top: 20%;
+    }
+    .three-cards {
+        position: absolute;
+        right: 20px;
+    }
+    #mascot{
+        position: fixed;
+        padding: 20px;
+        left: 20px;
+        bottom: 20px;
+    }
 }
+
+
+
+@media screen and (max-width: 39.9375em) {
+    .one-card {
+        position: static;
+        left: 20px;
+        margin: 0;
+    }
+    .main {
+        position: static;
+        left: 20px;
+        margin: 0;
+    }
+    .three-cards {
+        position: static;
+        left: 20px;
+        margin: 0;
+
+    }
+    #mascot{
+        position: static;
+        left: 20px;
+        margin: 0;
+    }
+} */
