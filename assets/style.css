@@ -47,6 +47,7 @@ input {
 }
 
 .main {
+    margin: 0 auto;
     position: absolute;
     right: 34%;
     top: 20%;
