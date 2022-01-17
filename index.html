@@ -10,76 +10,117 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Unkempt&display=swap" rel="stylesheet">
     <title>Villager Database</title>
+    <link rel="shortcut icon" href="./assets/images/turnip.png" type="image/x-icon">
 </head>
 <body>
     <header>
       <h3>Animal Crossing New Horizons Villager Database</h3>
     </header>
-    <!-- Intro to page -->
-    <section class="one-card">
-      <div class="card welcome" id ="welcomecard" style="width: 300px;">
-        <div class="card-divider">
-          Hello Welcome!
-        </div>
-        <div class="card-section">
-          <p>Please use this page to search through the Animal Crossing New Horizon Villagers database. It's simple, just search the villager and get some cool information. Give it a try!</p>
-        </div>
-      </div>
-      
-    </section>
-      <!-- Search bar -->
-    <form id="search">
-      <div class="grid-container">
-          <div class="medium-6 cell">
-            <label>
-              <input type="text" placeholder="Enter villager name">
-              <button class="submit success button">Enter</button>
-            </label>
+    
+    <article class="row" id="page-container">
+        <!-- Intro to page -->
+      <section class="one-card">
+        <div class="card welcome" id ="welcomecard" style="width: 300px;">
+          <div class="card-divider">
+            Hello!
           </div>
-      </div>
-    </form>
-      <!-- Main Card -->
-    <section class="main " id="main-card">
-      <div class="card" id="maincard" style="width: 600px; height: 650px;">
-        <div class="card-section">
-          <p>character info goes here</p>
+          <div class="card-section">
+            <p>Welcome to our page! Here you can search through the Animal Crossing New Horizon Villagers database. 
+              It's simple; just search for a villager and get some cool information. Give it a try!</p>
+            <p>Save your favorite villagers to the quicklist for easy access! Your five most recent saved will appear
+              on the list whenever you revisit the page.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="three-cards">
-      <!-- Quick List -->
-      <div class="card" id="qlcard" style="width: 300px;">
-        <div class="card-divider">
-          Quick List!
-        </div>
-        <div class="card-section">
-          <ul id="quicklist"></ul>
-        </div>
-      </div>
-      <!-- BDay Card -->
-      <div class="card" id= "bdaycard" style="width: 300px;">
-        <div class="card-divider">
-          Villager Birthday!
-        </div>
-        <div class="card-section">
-          <p></p>
-        </div>
-      </div>
-      <!-- Villager of the Day -->
-      <div class="card" id= "vodcard" style="width: 300px;">
-        <div class="card-divider">
-          Villager of the Day!
-        </div>
-        <div class="card-section">
-          <p>text</p>
-        </div>
-      </div>
-    </section>
+      </section>
+
+        <!-- Search bar -->
+      <section class="column">
+        <form id="search">
+          <div class="grid-container">
+              <div class="medium-6 cell">
+                <label>
+                  <input type="text" placeholder="Enter villager name">
+                  <button class="submit success button">Enter</button>
+                </label>
+              </div>
+          </div>
+        </form>
+
+          <!-- Main Card -->
+        <section class="main " id="main-card">
+          <!-- Currently, this is the div that gets nuked in JS. -->
+          <div class="card" id="maincard" style="width: 520px;">
+            <!-- potential place for villager name -->
+            <div class="card-divider" id="main-top">
+              </div>
+            <div class="vertical">
+              <!-- right section in the card -->
+              <div class="card-section" id="left">
+                </div>
+            <!-- left section in the card -->
+              <div class="card-section" id="right">
+                </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="three-cards">
+        <!-- Quick List -->
+        <section>
+          <div class="card" id="qlcard" style="width: 300px;">
+            <div class="card-divider">
+              Quick List!
+            </div>
+            <div class="card-section">
+              <ul id="quicklist"></ul>
+            </div>
+          </div>
+        </section>
+        
+        <!-- BDay Card -->
+        <section>
+          <div class="card" id= "bdaycard" style="width: 300px;">
+            <div class="card-divider">
+              Today's Birthday! 🎂
+            </div>
+            <div class="card-section">
+              <ul id="birthday-list"></ul>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Villager of the Day -->
+        <section>
+          <div class="card" style="width: 300px;">
+            <div class="card-divider">
+              Villager Spotlight
+            </div>
+            <div class="vertical">
+              <div id= "vodcard" class="card-section">
+              </div>
+            </div>
+          </div>
+        </section>
+        
+      </section>
+    </article>
+
     <section>
       <div id="mascot">
+        <div id="speech">
+          <img src="./assets/images/speech_bubble.png" style="width: 350px" alt="Daisy Mae says remember to use proper capitalization in your search!">
+        </div>
         <img src="assets/images/Daisy_Mae_NH.png" alt="Daisy_Mae">
       </div>
     </section>
+
+    <footer>
+      <div>
+        <p>Contributors: Shawn, Denise, Thomas, and Kayla ©2022 Nintendo/Animal Crossing ❤</p>
+        <p id="time"></p>
+      </div>
       
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
