@@ -106,6 +106,10 @@ function queryRender(queryString) {
         var villagerName = document.createElement('h2')
         villagerName.style.cssFloat = "left"
         villagerName.textContent = data.name['name-USen']
+        var villagerIcon = document.createElement('img')
+        villagerIcon.src = data.icon_uri
+        villagerIcon.style.width = "70px"
+        villagerName.appendChild(villagerIcon)
         nameButton.appendChild(villagerName)
  
         var saveButton = document.createElement('button')
