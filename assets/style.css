@@ -63,6 +63,7 @@ label {
     position: relative;
     min-height: 100vh;
   }
+  
 footer {
     background-color: #cbf1ca;
     position: relative;
@@ -109,10 +110,10 @@ img {
     border-left: 3px solid white;
 }
 
-
-/* #main-card {
+/* Please leave #main-card uncommented so that the main card is hidden until a villager is searched for. */
+#main-card {
     display: none;
-} */
+}
 
 .clickable {
     cursor: pointer;
