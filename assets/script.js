@@ -146,8 +146,8 @@ function queryRender(queryString) {
 
         // var mainCard = document.querySelector('#maincard')
         var mainCardTop = document.querySelector('#main-top')
-        var mainCardRight = document.querySelector('#main-right')
-        var mainCardLeft = document.querySelector('#main-left')
+        var mainCardRight = document.querySelector('#right')
+        var mainCardLeft = document.querySelector('#left')
 
         mainCardTop.innerHTML = ''
         mainCardRight.innerHTML = ''
@@ -264,7 +264,7 @@ function amiiboImage (query) {
     .then(function (data) {
         console.log(data)
 
-        var amiiboSection = document.querySelector('#main-left');
+        var amiiboSection = document.querySelector('#left');
         var amiiboImg = document.createElement('span');
         amiiboImg.innerHTML = "<img src='" + data.amiibo[0].image + "' alt='amiibo-card for searched character'>";
         // console.log(data.amiibo[0].image)
