@@ -24,6 +24,7 @@ var searchButton = document.querySelector('.success')
 //TODO: When villagers from quicklist are loaded, their amiibo cards aren't loaded
 //because the amiibo function relies on the query provided by the user.
 function onLoad() {
+    birthday();
     var history = JSON.parse(localStorage.getItem("quicklist"))
     // console.log(history);
 
@@ -329,6 +330,38 @@ quickListContainer.addEventListener("click", function(event) {
         //value to render properly.
     }
 })
+
+function birthday() {
+    var showTime = document.querySelector('#time')
+    var currentTime = document.createElement('span')
+    var birthdayEl = document.querySelector('#birthday-list')
+    currentTime.textContent = moment().format("MMMM Do")
+
+
+
+    fetch(villagerApiUrl)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var birthdayFinder = data.filter(villager => villager['birthday-string'] === currentTime.textContent)
+        console.log(birthdayFinder)
+        var birthdayName = document.createElement('li')
+        birthdayName.textContent = birthdayFinder[0].name['name-USen']
+        birthdayEl.appendChild(birthdayName)
+        var birthdayIcon = document.createElement('span')
+        birthdayIcon.innerHTML = '<img src="' + birthdayFinder[0].icon_uri + '" width="53" height="53 alt="Icon of villager whose birthday is today.">'
+        birthdayName.appendChild(birthdayIcon)
+
+    })
+
+
+
+    showTime.appendChild(currentTime)
+    console.log(currentTime)
+
+
+}
 
 searchBar.addEventListener('submit', handleSearchSubmit)
 searchButton.addEventListener('click', handleSearchSubmit)
