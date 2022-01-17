@@ -13,11 +13,10 @@ body {
 header {
     background: linear-gradient(#32cf81, rgb(7, 53, 46));
     color: #fff563;
-    margin-bottom: 10px;
+    height: 70px;
     display: flex;
     justify-content: center;
-    text-align: center;
-    width: 100%;
+    align-items: center;
 }
 
 h2, h3, h5 {
@@ -37,7 +36,6 @@ form {
 }
 
 .column {
-    /* margin: 0 auto; */
     justify-content: center;
 }
 
@@ -52,6 +50,19 @@ label {
     align-self: center;
 }
 
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+footer {
+    background-color: #cbf1ca;
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}
+
 .card {
     border-radius: 10px;
 }
@@ -62,11 +73,9 @@ img {
 
 .card-divider{
     background-color: rgb(68, 165, 149);
-    /* border-radius: 10px; */
     color: white;
     font-size: 24px;
     display: block;
-    /* justify-content: center; */
     text-align: center;
 }
 
@@ -78,7 +87,6 @@ img {
 .vertical {
     display: flex;
     flex-direction: row;
-    /* text-align: center; */
     
 }
 #left{
@@ -95,11 +103,7 @@ img {
 
 #main-card {
     display: none;
-<<<<<<< HEAD
 }
-=======
-} 
->>>>>>> dev
 
 .list-item {
     cursor: pointer;
@@ -108,8 +112,8 @@ img {
 #mascot{
     position: fixed; 
     padding: 20px; 
-    left: 20px; 
-    bottom: 20px;
+    left: 10px; 
+    bottom: 40px;
 }
 
 @media screen and (max-width: 90.9375em) {
@@ -132,11 +136,11 @@ img {
         position: fixed;
         padding: 20px;
         left: 20px;
-        bottom: 20px;
+        bottom: 5px;
     }
 }
 
-@media screen and (max-width: 75.9375em) {
+/* @media screen and (max-width: 75.9375em) {
     article {
         display: flex;
         flex-flow: row wrap;
@@ -167,7 +171,7 @@ img {
         top: 20px;
         right: 20px;
     }
-}
+} */
 
 @media screen and (max-width: 39.9375em) {
     article {
@@ -196,6 +200,18 @@ img {
     }
     #mascot{
         position: relative;
-        left: 150px
+        left: 80px
+    }
+    #page-container {
+        position: relative;
+        min-height: 100vh;
+      }
+    footer {
+        background-color: #cbf1ca;
+        position: relative;
+        text-align: center;
+        bottom: 0;
+        width: 100%;
+        height: 2.5rem;
     }
 }
