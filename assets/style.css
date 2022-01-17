@@ -1,6 +1,4 @@
 * {
-    margin: 0;
-    padding: 0;
     font-family: 'Unkempt', cursive;
 }
 
@@ -22,99 +20,151 @@ h3 {
     font-family: 'Unkempt', cursive;
 }
 
-form {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    padding: 10px;
-    width: 20%;
-    text-align: center;
+article {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
 }
 
-input {
-    width: 100%;
+/* section .column {
+    align-items: center;
+} */
+
+label {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.submit {
+    display: flex;
+    align-self: center;
+}
+
+/* .main {
+    display: flex;
+    align-self: center;
+} */
+
+.card {
+    border-radius: 10px;
 }
 
 .card-divider{
     background-color: rgb(68, 165, 149);
-    border-radius: 10px;
     justify-content: center;
     text-align: center;
 }
 
-.one-card {
-    position: absolute;
-    left: 20px;
+.card-section {
+    background-image: url(https://cdn.discordapp.com/attachments/929126246409973800/931747812222308402/grass.png);
 }
 
-.main {
-    margin: 0 auto;
-    position: absolute;
-    right: 34%;
-    top: 20%;
+.vertical {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    
+}
+#left{
+    margin-left: 0;
+    border-right: 3px solid blue;
+    width: 20%;
+}
+#right{
+    margin-right: 0;
+    border-left: 3px solid blue;
+    width: 20%;
 }
 
-.right {
-    flex-wrap: wrap;
-    text-align: left;
-    border-right: 3px solid lightcoral;
-}
 
-.left {
-    flex-wrap: wrap;
-    /* text-align: left; */
-    border-left: 3px solid lightcoral;
-}
-
-.three-cards {
-    position: absolute;
-    right: 20px;
-}
-
-#welcomecard{
-    padding: 10px;
-}
-#maincard{
-    padding: 10px;
-}
-#main-card {
+/* #main-card {
     display: none;
-}
-#qlcard{
-    padding: 10px;
-  }
+} */
+
 .list-item {
     cursor: pointer;
 }
-#bdaycard{
-    padding:10px;
-}
-#vodcard{
-  padding:10px;
-}
+
 #mascot{
-    position: fixed;
-    padding: 20px;
-    left: 20px;
+    position: fixed; 
+    padding: 20px; 
+    left: 20px; 
     bottom: 20px;
 }
 
+@media screen and (max-width: 74.9375em) {
+    article {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 20px;
+    }
+    label {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+    }
+    .submit {
+        display: flex;
+        align-self: center;
+    }
+    #mascot{
+        position: fixed;
+        padding: 20px;
+        left: 20px;
+        bottom: 20px;
+    }
+}
 
-.card-divider {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 1 auto;
-        -ms-flex: 0 1 auto;
-            flex: 0 1 auto;
-    padding: 1rem;
-    background: #e6e6e6; }
+/* @media screen and (max-width: 63.9375em) {
+    article {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        margin: 20px;
+    }
+    label {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+    }
+    .submit {
+        display: flex;
+        align-self: center;
+    }
+    .three-cards {
+        display: inline;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+    #mascot{
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
+} */
 
-
-
-@media screen and (max-width: 50%) {
-    
+@media screen and (max-width: 39.9375em) {
+    article {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 20px;
+    }
+    label {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+    }
+    .submit {
+        display: flex;
+        align-self: center;
+    }
+    #mascot{
+        position: relative;
+        left: 150px
+    }
 }

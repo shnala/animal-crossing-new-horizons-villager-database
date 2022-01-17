@@ -16,84 +16,85 @@
     <header>
       <h3>Animal Crossing New Horizons Villager Database</h3>
     </header>
-    <!-- Intro to page -->
-    <section class="one-card">
-      <div class="card welcome" id ="welcomecard" style="width: 300px;">
-        <div class="card-divider">
-          Hello Welcome!
-        </div>
-        <div class="card-section">
-          <p>Please use this page to search through the Animal Crossing New Horizon Villagers database. It's simple, just search the villager and get some cool information. Give it a try!</p>
-        </div>
-      </div>
-      
-    </section>
-      <!-- Search bar -->
-  <section>
-    <form id="search">
-      <div class="grid-container">
-          <div class="medium-6 cell">
-            <label>
-              <input type="text" placeholder="Enter villager name">
-              <button class="submit success button">Enter</button>
-            </label>
+    
+    <article class="row">
+        <!-- Intro to page -->
+      <section class="one-card">
+        <div class="card welcome" id ="welcomecard" style="width: 300px;">
+          <div class="card-divider">
+            Hello Welcome!
           </div>
-      </div>
-    </form>
-
-      <!-- Main Card -->
-    <section class="main " id="main-card">
-      <!-- Currently, this is the div that gets nuked in JS. -->
-      <div class="card" id="maincard" style="width: 600px;">
-
-        <div id="main-top">  
-        </div>
-        
-        <div class="card-divider vertical menu align-right">
-        </div>
-
-        <div id="main-right" class="card-section right">
-        </div>
-        
-        <div id="main-left" class="card-section left">
-        </div>
-      </div>
-
-    </section>
-  </section>
-
-    <section class="three-cards">
-      <!-- Quick List -->
-      <div class="card" id="qlcard" style="width: 300px;">
-        <div class="card-divider">
-          Quick List!
-        </div>
-        <div class="card-section">
-          <ul id="quicklist"></ul>
-        </div>
-      </div>
-      <!-- BDay Card -->
-      <div class="card" id= "bdaycard" style="width: 300px;">
-        <div class="card-divider">
-          Villager Birthday!
-        </div>
-        <div class="card-section">
-          <p></p>
-        </div>
-      </div>
-      <!-- Villager of the Day -->
-      <div class="card" id= "vodcard" style="width: 300px;">
-        <div class="card-divider">
-          Villager of the Day!
-        </div>
-          <div class="card-section right">
-            There is a  </p>
+          <div class="card-section">
+            <p>Please use this page to search through the Animal Crossing New Horizon Villagers database. It's simple, just search the villager and get some cool information. Give it a try!</p>
           </div>
-          <div class="card-section left">
-            it will instantly
+        </div>
+      </section>
+        <!-- Search bar -->
+      <section class="column">
+        <form id="search">
+          <div class="grid-container">
+              <div class="medium-6 cell">
+                <label>
+                  <input type="text" placeholder="Enter villager name">
+                  <button class="submit success button">Enter</button>
+                </label>
+              </div>
           </div>
-      </div>
-    </section>
+        </form>
+
+          <!-- Main Card -->
+        <section class="main " id="main-card">
+          <!-- Currently, this is the div that gets nuked in JS. -->
+          <div class="card" id="maincard" style="width: 600px;">
+            <!-- potential place for villager name -->
+            <div class="card-divider" id="main-top">
+            </div>
+            <article class="vertical">
+              <!-- right section in the card -->
+            <div class="card-section" id="left">
+            </div>
+            <!-- left section in the card -->
+            <div class="card-section" id="right">
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="three-cards">
+        <!-- Quick List -->
+        <div class="card" id="qlcard" style="width: 300px;">
+          <div class="card-divider">
+            Quick List!
+          </div>
+          <div class="card-section">
+            <ul id="quicklist"></ul>
+          </div>
+        </div>
+        <!-- BDay Card -->
+        <div class="card" id= "bdaycard" style="width: 300px;">
+          <div class="card-divider">
+            Villager Birthday!
+          </div>
+          <div class="card-section">
+            <p></p>
+          </div>
+        </div>
+        <!-- Villager of the Day -->
+        <div class="card" id= "vodcard" style="width: 300px;">
+          <div class="card-divider">
+            Villager of the Day!
+          </div>
+          <div class="vertical">
+            <div class="card-section" id="left">
+              <p>There is o difference in the effect on flex items; flex layout is identical whether the flex container is block-level or inline-level.</p>
+            </div>
+            <div class="card-section" id="right">
+              <p> it will o difference in the effect on flex items; flex layout is identical whether the flex container is block-level or inline-level. In particular, th</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
     <section>
       <div id="mascot">
         <img src="assets/images/Daisy_Mae_NH.png" alt="Daisy_Mae">
