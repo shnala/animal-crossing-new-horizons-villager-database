@@ -157,9 +157,20 @@ function queryRender(queryString) {
         // amiiboImage();
         
 
-        var villagerName = document.createElement('h3')
+        var nameButton = document.createElement('div')
+        nameButton.style.display = "inline-block"
+        nameButton.style.width = "80%"
+        nameButton.style.justifyContent = "space-between";
+        var villagerName = document.createElement('h2')
         villagerName.textContent = data.name['name-USen']
-        mainCardTop.appendChild(villagerName)
+        nameButton.appendChild(villagerName)
+ 
+        var saveButton = document.createElement('button')
+        saveButton.classList.add('button', 'success')
+        saveButton.textContent = 'Save'
+        nameButton.appendChild(saveButton)
+        mainCardTop.appendChild(nameButton)
+        saveButton.addEventListener('click', saveToQuickList)
 
         var villagerSpecies = document.createElement('h5')
         villagerSpecies.textContent = data.species
@@ -178,7 +189,8 @@ function queryRender(queryString) {
         mainCardRight.appendChild(villagerType)
 
         var villagerImg = document.createElement('span')
-        villagerImg.innerHTML = "<img src='" + data.image_uri + "' alt='Image of villager.'>";
+        villagerImg.style.paddingBottom = "5px"
+        villagerImg.innerHTML = "<img src='" + data.image_uri + "' style='padding-bottom: 10px;' alt='Image of villager.'>";
         mainCardLeft.appendChild(villagerImg)
 
         var villagerMottoEl = document.createElement('div')
@@ -208,10 +220,6 @@ function queryRender(queryString) {
         villagerHobbyEl.appendChild(villagerHobbyTag)
         mainCardRight.appendChild(villagerHobbyEl)
 
-        var saveButton = document.createElement('button')
-        saveButton.textContent = 'Save'
-        mainCardTop.appendChild(saveButton)
-        saveButton.addEventListener('click', saveToQuickList)
 
                 
 //TODO: Entries on the quicklist should be clickable. When clicked, that villager's id is 
@@ -233,8 +241,7 @@ function queryRender(queryString) {
                 quickListContainer.appendChild(qlItem)
 
                 var qlItemIcon = document.createElement('span')
-                //TODO: Set dimensions of icon to not be oversized.
-                qlItemIcon.innerHTML = "<img src='" + data.icon_uri + "' width='48' height='48' alt='Icon of villager.'>";
+                qlItemIcon.innerHTML = "<img src='" + data.icon_uri + "' width='53' height='53' alt='Icon of villager.'>";
                 qlItem.appendChild(qlItemIcon)
         
                 var villagerKey = {
