@@ -50,6 +50,10 @@ label {
     align-self: center;
 }
 
+#maincard {
+    width: 600px;
+}
+
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -101,11 +105,8 @@ img {
 }
 
 
-#main-card {
+/* #main-card {
     display: none;
-}
-/* #main-top {
-    display: inline;
 } */
 
 .clickable {
@@ -200,6 +201,9 @@ img {
         display: flex;
         align-self: center;
     }
+    /* #maincard {
+        width: 200px;
+    } */
     .three-cards{
         display: flex;
         flex-direction: column;
