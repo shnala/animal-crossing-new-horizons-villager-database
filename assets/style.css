@@ -27,9 +27,10 @@ article {
     margin: 20px;
 }
 
-/* section .column {
-    align-items: center;
-} */
+form {
+    display: flex;
+    justify-items: center;
+}
 
 label {
     display: flex;
@@ -41,11 +42,6 @@ label {
     display: flex;
     align-self: center;
 }
-
-/* .main {
-    display: flex;
-    align-self: center;
-} */
 
 .card {
     border-radius: 10px;
@@ -64,24 +60,24 @@ label {
 .vertical {
     display: flex;
     flex-direction: row;
-    text-align: center;
+    /* text-align: center; */
     
 }
 #left{
     margin-left: 0;
-    border-right: 3px solid blue;
     width: 20%;
+    border-right: 3px solid white;
 }
 #right{
     margin-right: 0;
-    border-left: 3px solid blue;
     width: 20%;
+    border-left: 3px solid white;
 }
 
 
-/* #main-card {
+#main-card {
     display: none;
-} */
+}
 
 .list-item {
     cursor: pointer;
@@ -94,7 +90,7 @@ label {
     bottom: 20px;
 }
 
-@media screen and (max-width: 74.9375em) {
+@media screen and (max-width: 90.9375em) {
     article {
         display: flex;
         flex-direction: row;
@@ -118,12 +114,16 @@ label {
     }
 }
 
-/* @media screen and (max-width: 63.9375em) {
+@media screen and (max-width: 75.9375em) {
     article {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
         margin: 20px;
+    }
+    form {
+    display: flex;
+    justify-items: center;
     }
     label {
         display: flex;
@@ -135,9 +135,9 @@ label {
         align-self: center;
     }
     .three-cards {
-        display: inline;
+        display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: flex-end;
     }
     #mascot{
@@ -145,14 +145,19 @@ label {
         top: 20px;
         right: 20px;
     }
-} */
+}
 
 @media screen and (max-width: 39.9375em) {
     article {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        justify-content: center;
+        align-items: center;
         margin: 20px;
+    }
+    form {
+        display: flex;
+        justify-items: center;
     }
     label {
         display: flex;
@@ -162,6 +167,10 @@ label {
     .submit {
         display: flex;
         align-self: center;
+    }
+    .three-cards{
+        display: flex;
+        flex-direction: column;
     }
     #mascot{
         position: relative;
