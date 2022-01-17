@@ -19,7 +19,7 @@ header {
     align-items: center;
 }
 
-h2, h3, h5 {
+h2, h3, h4, h5 {
     font-family: 'Unkempt', cursive;
 }
 
@@ -104,9 +104,15 @@ img {
 #main-card {
     display: none;
 }
+/* #main-top {
+    display: inline;
+} */
 
-.list-item {
+.clickable {
     cursor: pointer;
+}
+.clickable:hover {
+    opacity: 0.5;
 }
 
 #mascot{
@@ -197,6 +203,9 @@ img {
     .three-cards{
         display: flex;
         flex-direction: column;
+    }
+    #vodcard-head {
+        display: inline;
     }
     #mascot{
         position: relative;
