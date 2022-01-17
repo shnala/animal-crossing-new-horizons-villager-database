@@ -118,7 +118,7 @@ img {
 #mascot{
     position: fixed; 
     padding: 20px; 
-    left: 10px; 
+    /* left: 10px;  */
     bottom: 45px;
 }
 
@@ -209,7 +209,8 @@ img {
     }
     #mascot{
         position: relative;
-        left: 68px
+        /* left: 68px; */
+
     }
     #page-container {
         position: relative;
@@ -224,3 +225,4 @@ img {
         height: 5.7rem;
     }
 }
+
