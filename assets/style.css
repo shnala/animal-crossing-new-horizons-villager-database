@@ -50,10 +50,6 @@ label {
     align-self: center;
 }
 
-#maincard {
-    width: 600px;
-}
-
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -119,7 +115,6 @@ img {
 #mascot{
     position: fixed; 
     padding: 20px; 
-    /* left: 10px;  */
     bottom: 45px;
 }
 
@@ -213,8 +208,6 @@ img {
     }
     #mascot{
         position: relative;
-        /* left: 68px; */
-
     }
     #page-container {
         position: relative;
@@ -229,4 +222,3 @@ img {
         height: 5.7rem;
     }
 }
-
