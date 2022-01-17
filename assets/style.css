@@ -4,11 +4,15 @@
 
 body {
     background-color: #cbf1ca;
+    background: url(https://cdn.discordapp.com/attachments/929126246409973800/931747812222308402/grass.png) center center repeat;
+    background-size: 7em;
+
+
 }
 
 header {
     background: linear-gradient(#32cf81, rgb(7, 53, 46));
-    color: white;
+    color: #fff563;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
@@ -16,7 +20,7 @@ header {
     width: 100%;
 }
 
-h3 {
+h2, h3, h5 {
     font-family: 'Unkempt', cursive;
 }
 
@@ -30,6 +34,11 @@ article {
 /* section .column {
     align-items: center;
 } */
+
+.column {
+    /* margin: 0 auto; */
+    justify-content: center;
+}
 
 label {
     display: flex;
@@ -51,14 +60,23 @@ label {
     border-radius: 10px;
 }
 
+img {
+    border-radius: 1em;
+}
+
 .card-divider{
     background-color: rgb(68, 165, 149);
-    justify-content: center;
+    /* border-radius: 10px; */
+    color: white;
+    font-size: 24px;
+    display: block;
+    /* justify-content: center; */
     text-align: center;
 }
 
 .card-section {
-    background-image: url(https://cdn.discordapp.com/attachments/929126246409973800/931747812222308402/grass.png);
+    background-color: whitesmoke;
+
 }
 
 .vertical {
@@ -79,9 +97,9 @@ label {
 }
 
 
-/* #main-card {
+#main-card {
     display: none;
-} */
+} 
 
 .list-item {
     cursor: pointer;
