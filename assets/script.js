@@ -20,7 +20,7 @@ function onLoad() {
 
             var loadId = recentHistory[i].id
             var loadString = villagerApiUrl + loadId
-            console.log(loadString);
+            // console.log(loadString);
 
 
             fetch(loadString)
@@ -28,7 +28,7 @@ function onLoad() {
                 return response.json();
             })
             .then(function(data) {
-                console.log(data)
+                // console.log(data)
 
             var quickListContainer = document.querySelector('#quicklist')
             var qlItem = document.createElement('li');
@@ -83,22 +83,21 @@ function handleSearchSubmit(event) {
 }
 
 function queryRender(queryString) {
+    var mainCardContainer = document.querySelector('#main-card')
+    mainCardContainer.style.display = "block";
+    var mainCardTop = document.querySelector('#main-top')
+    var mainCardRight = document.querySelector('#right')
+    var mainCardLeft = document.querySelector('#left')
+    mainCardTop.innerHTML = ''
+    mainCardRight.innerHTML = ''
+    mainCardLeft.innerHTML = ''
+
     fetch(queryString)
     .then(function (response) {
         return response.json();
     })
     .then(function(data) {
         console.log(data);
-        var mainCardContainer = document.querySelector('#main-card')
-        mainCardContainer.style.display = "block";
-
-        var mainCardTop = document.querySelector('#main-top')
-        var mainCardRight = document.querySelector('#right')
-        var mainCardLeft = document.querySelector('#left')
-
-        mainCardTop.innerHTML = ''
-        mainCardRight.innerHTML = ''
-        mainCardLeft.innerHTML = ''
 
         var nameButton = document.createElement('div')
         nameButton.style.display = "block"
@@ -217,12 +216,19 @@ function amiiboImage (query) {
     })
     .then(function (data) {
         console.log(data)
-
         var amiiboSection = document.querySelector('#left');
-        var amiiboImg = document.createElement('span');
-        amiiboImg.innerHTML = "<img src='" + data.amiibo[0].image + "' alt='amiibo-card for searched character'>";
-        // console.log(data.amiibo[0].image)
+
+        var amiiboImg = document.createElement('img');
+        amiiboImg.src = data.amiibo[0].image
+        amiiboImg.setAttribute("alt", "Amiibo card image")
+        amiiboImg.style.paddingBottom = "5px"
         amiiboSection.appendChild(amiiboImg)
+
+        // var amiiboImg = document.createElement('span');
+        // amiiboImg.innerHTML = "<img src='" + data.amiibo[0].image + "' alt='amiibo-card for searched character'>";
+        // amiiboImg.style.paddingBottom = "5px"
+        // // console.log(data.amiibo[0].image)
+        // amiiboSection.appendChild(amiiboImg)
     })
 }
 
@@ -230,14 +236,13 @@ function amiiboImage (query) {
 threeCards.addEventListener("click", function(event) {
     var element = event.target
 
-
     if (element.matches("li") || element.matches("img") || element.matches("h4") === true) {
         var grabId = element.getAttribute("vill-id");
         var quickUrl = villagerApiUrl + grabId
         var amiiboName = element.getAttribute("vill-name")
         console.log(amiiboName);
         queryRender(quickUrl);
-        amiiboImage(amiiboName)
+        amiiboImage(amiiboName);
 
     }
 })
