@@ -2,15 +2,17 @@
 Getting Started:
 Upon loading the database, the user will be greeted by the instruction box, a search bar, the quick list for saved characters, the birthday card of the day and the villager spotlight of the day.
 
+This project is created to give the user an easier gaming experience while playing Animal Crossing. The user can get information about their favorite character in this interactive site instead of waiting to be told by the game or basically not knowing at all some information on the database is not found in game. This is very interactive, user friendly and has features that resemble the game.
+
 Usage:
 Use this as a method to gain more knowledge on Animal Crossing characters.
 
 Demo:
-![load page](/assets/images/ACNHVD.gif)
 ![load page](/assets/images/ACNHVD1.gif)
 
 Installation:
-No installation is required.
+No installation is required. Site is live and accessible at:
+[https://shnala.github.io/animal-crossing-new-horizons-villager-database/]
 
 
 Built with:
@@ -34,10 +36,6 @@ Denise: deniwonder8@gmail.com
 Kayla: flowergirl0405@gmail.com
 Shawn: shawnanalla@gmail.com
 Thomas: tpreston013@gmail.com
-
-Project Link:
-https://shnala.github.io/animal-crossing-new-horizons-villager-database/
-
 
 License:
 2022 Nintendo/Animal Crossing 2022
