@@ -20,7 +20,7 @@ function onLoad() {
 
             var loadId = recentHistory[i].id
             var loadString = villagerApiUrl + loadId
-            console.log(loadString);
+            // console.log(loadString);
 
 
             fetch(loadString)
@@ -28,7 +28,7 @@ function onLoad() {
                 return response.json();
             })
             .then(function(data) {
-                console.log(data)
+                // console.log(data)
 
             var quickListContainer = document.querySelector('#quicklist')
             var qlItem = document.createElement('li');
